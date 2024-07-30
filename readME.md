@@ -48,4 +48,4 @@ This repository contains a Flask application that provides REST APIs for managin
 
 4. **Postman API Dashboard**
 Below is an image showing the Postman API dashboard:
-![Alt text](https://github.com/rrvermaa/first-app/tree/master/image/postman_apis.png)
+![Alt text](https://raw.github.com/rrvermaa/first-app/tree/master/image/postman_apis.jpg)
