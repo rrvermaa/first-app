@@ -47,5 +47,6 @@ This repository contains a Flask application that provides REST APIs for managin
     Swagger UI is available at `http://localhost:5000/swagger-ui`.
 
 4. **Postman API Dashboard**
-Below is an image showing the Postman API dashboard:
-`![Postman API Dashboard](https://raw.github.com/rrvermaa/first-app/tree/master/postman_apis.jpg)`
+    
+    Below is an image showing the Postman API dashboard:
+    ![Postman API Dashboard](https://raw.github.com/rrvermaa/first-app/tree/master/postman_apis.jpg)
