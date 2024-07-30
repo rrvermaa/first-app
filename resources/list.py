@@ -1,10 +1,10 @@
 from flask import request
 from uuid import uuid4
-from db import ListDatabase
+from db.lists import ListDatabase
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
 from schema import ListSchema, ListGetSchema, SuccessMessageSchema, ListQuerySchema, ListOptionalQuerySchema
-
+from flask_jwt_extended import jwt_required
 blp = Blueprint('Lists', __name__, description="Operations on Lists")
 
 @blp.route('/list')
@@ -13,6 +13,7 @@ class List(MethodView):
     def __init__(self):
         self.db = ListDatabase()
     
+    @jwt_required()
     @blp.response(200, ListGetSchema(many=True))
     @blp.arguments(ListOptionalQuerySchema, location='query')
     def get(self, args):
@@ -26,7 +27,7 @@ class List(MethodView):
             return result 
                         
                 
-         
+    @jwt_required()
     @blp.arguments(ListSchema)
     @blp.response(200, SuccessMessageSchema)
     @blp.arguments(ListQuerySchema, location='query')
@@ -36,7 +37,8 @@ class List(MethodView):
             return {'message': 'Data Updated successfully'}, 200
         else:    
             abort(404, message = "Data not found")
-
+            
+    @jwt_required()
     @blp.arguments(ListSchema)
     @blp.response(200, SuccessMessageSchema)
     @blp.arguments(ListQuerySchema, location='query')
@@ -44,6 +46,7 @@ class List(MethodView):
         self.db.add_item(uuid4().hex, request_data)
         return {'message': 'List added successfully'}, 201
 
+    @jwt_required()
     @blp.response(200, SuccessMessageSchema)
     @blp.arguments(ListQuerySchema, location='query')
     def delete(self, args):

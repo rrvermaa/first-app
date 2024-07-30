@@ -18,10 +18,15 @@ class ListQuerySchema(Schema):
 class ListOptionalQuerySchema(Schema):
     id = fields.Str(load_only = False)
 
-# class UserSchema(Schema):
-#     id = fields.Int(dump_only = True)
-#     username = fields.Str(required = True)
-#     password = fields.Str(required = True, load_only = True)
+class UserSchema(Schema):
+    id = fields.Int(dump_only = True)
+    username = fields.Str(required = True)
+    password = fields.Str(required = True, load_only = True)
     
-# class UserQuerySchema(Schema):
-#     id = fields.Int(required = True)
+class UserQuerySchema(Schema):
+    id = fields.Int(required = True)
+    
+
+class UserGetSchema(Schema):
+    username = fields.Str(dump_only=True)
+    password = fields.Int(dump_only=True)
